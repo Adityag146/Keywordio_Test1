@@ -1,56 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import React from "react";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import "./App.css";
+import Grid from "@mui/material/Grid";
+import AdTable from "../src/app/GlobalComponents/Table";
+import Header from "../src/app/GlobalComponents/Header";
+import TextAddForm from "../src/features/addCreator/components/TextAddForm";
+import MediaAddForm from "../src/features/addCreator/components/MediaAddForm";
+import Layout from "../src/app/GlobalComponents/Layout";
+import SubmitPopUp from "./app/GlobalComponents/SubmitPopUp";
+import CreateAdd from "./features/addCreator/components/CreateAdd";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="App" style={{ margin: "20px" }}>
+      <Header />
+      <CreateAdd />
     </div>
   );
 }

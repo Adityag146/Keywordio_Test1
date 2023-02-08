@@ -1,5 +1,20 @@
-.App {
-  text-align: center;
+
+
+@font-face {
+  font-family: 'Adobe Clean';
+  src: url('../public/fonts/AdobeClean-Regular.woff2') format('woff2'),
+      url('../public/fonts/AdobeClean-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+h1,h2,h3,h4,h5,h6,p,span{
+  font-family: 'Adobe Clean'!important ;
+  
+}
+
+.MuiPaper-root-MuiAppBar-root{
+  box-shadow: none;
 }
 
 .App-logo {
