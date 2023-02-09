@@ -66,6 +66,10 @@ export default function MediaAddForm() {
             <TextField
               onChange={(e) => handleChange(e)}
               name="description1"
+              multiline
+              className="description-Input"
+              rows={5}
+              maxRows={10}
               fullWidth
             />
           </Grid>

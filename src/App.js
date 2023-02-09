@@ -10,11 +10,11 @@ import MediaAddForm from "../src/features/addCreator/components/MediaAddForm";
 import Layout from "../src/app/GlobalComponents/Layout";
 import SubmitPopUp from "./app/GlobalComponents/SubmitPopUp";
 import CreateAdd from "./features/addCreator/components/CreateAdd";
+import Dashboard from "./features/DashBoard/components/Dashboard";
 function App() {
   return (
     <div className="App" style={{ margin: "20px" }}>
-      <Header />
-      <CreateAdd />
+      <Layout />
     </div>
   );
 }

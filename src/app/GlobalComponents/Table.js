@@ -20,6 +20,7 @@ import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 function createData(name, calories, fat, carbs) {
   return {
@@ -103,6 +104,12 @@ const headCells = [
     disablePadding: false,
     label: "Carbs (g)",
   },
+  {
+    id: "carbs",
+    numeric: true,
+    disablePadding: false,
+    label: "Carbs (g)",
+  },
 ];
 
 function EnhancedTableHead(props) {
@@ -121,11 +128,22 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
+        <TableCell sx={{ padding: "8px 16px", fontWeight: "bold" }}>
+          Ad Insights
+        </TableCell>
+
+        <TableCell sx={{ padding: "8px 16px" }}></TableCell>
+        <TableCell sx={{ padding: "8px 16px" }}></TableCell>
+        <TableCell sx={{ padding: "8px 16px" }}></TableCell>
+        <TableCell sx={{ padding: "8px 16px", textAlign: "right" }}>
+          <HelpOutlineIcon sx={{ color: "#dddbdb" }} />
+        </TableCell>
+      </TableRow>
+      <TableRow>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            sx={{ padding: "16px" }}
-            align={headCell.numeric ? "right" : "left"}
+            sx={{ padding: "16px", fontWeight: "bold" }}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -210,7 +228,7 @@ export default function AdTable() {
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
         <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+          <Table aria-labelledby="tableTitle">
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}
@@ -226,27 +244,29 @@ export default function AdTable() {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.name}
-                      selected={isItemSelected}
-                    >
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        sx={{ padding: "16px" }}
-                        padding="none"
+                    <>
+                      <TableRow
+                        hover
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.name}
+                        selected={isItemSelected}
                       >
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                    </TableRow>
+                        <TableCell
+                          id={labelId}
+                          scope="row"
+                          sx={{ padding: "16px" }}
+                          padding="none"
+                        >
+                          {row.name}
+                        </TableCell>
+                        <TableCell>{row.calories}</TableCell>
+                        <TableCell>{row.fat}</TableCell>
+                        <TableCell>{row.carbs}</TableCell>
+                        <TableCell>{row.carbs}</TableCell>
+                      </TableRow>
+                    </>
                   );
                 })}
             </TableBody>

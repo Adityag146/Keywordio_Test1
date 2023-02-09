@@ -14,6 +14,7 @@ export const CretaeAddWrapper = styled.div`
     background: #fafafa;
   }
   .MuiCardContent-root:last-child {
+    text-align: center;
     padding: 10px;
   }
   .MuiFormControlLabel-root {
@@ -33,6 +34,9 @@ export const MediaAddWrapper = styled.div`
     border-radius: 10px;
     background: #fff;
     border: 1px solid #cecece;
+  }
+  .description-Input .MuiInputBase-root {
+    padding-bottom: 24px;
   }
   .form-label-div {
     display: flex;

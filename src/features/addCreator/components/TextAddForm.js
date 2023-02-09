@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import {
   Typography,
@@ -13,12 +13,23 @@ import TextField from "@mui/material/TextField";
 import { MediaAddWrapper } from "../style";
 
 export default function TextAddForm() {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const textFormData = {
+    Heading1: "",
+    Heading2: "",
+    Description1: "",
+    BuisnessName: "",
+    ButtonLabel: "",
+    WebsiteUrl: "",
+  };
+  // const [age, setAge] = React.useState("");
+  const [textForm, setTextForm] = useState(textFormData);
+  const handleChange = (e) => {
+    setTextForm({ ...textForm, [e.target.name]: e.target.value });
   };
 
+  const handleClick = () => {
+    console.log(textForm);
+  };
   return (
     <MediaAddWrapper>
       <Typography variant="h6" gutterBottom sx={{ textAlign: "left" }}>
@@ -29,7 +40,11 @@ export default function TextAddForm() {
           <Grid item xs={6}>
             <Grid item xs={12} className="form-label-div">
               <label>Heading 01</label>
-              <TextField defaultValue="Hello World" fullWidth />
+              <TextField
+                onChange={(e) => handleChange(e)}
+                name="Heading1"
+                fullWidth
+              />
             </Grid>
             <Grid
               item
@@ -38,26 +53,42 @@ export default function TextAddForm() {
               sx={{ marginTop: "10px" }}
             >
               <label>Heading 02</label>
-              <TextField defaultValue="Hello World" fullWidth />
+              <TextField
+                onChange={(e) => handleChange(e)}
+                name="Heading2"
+                fullWidth
+              />
             </Grid>
           </Grid>
           <Grid item xs={6} className="form-label-div">
             <label>Description 01</label>
-            <TextField defaultValue="Hello World" fullWidth />
+            <TextField
+              onChange={(e) => handleChange(e)}
+              name="Description1"
+              multiline
+              className="description-Input"
+              rows={5}
+              maxRows={10}
+              fullWidth
+            />
           </Grid>
         </Grid>
         <Grid container spacing={2} item xs={12} md={12}>
           <Grid item xs={6} className="form-label-div">
             <label>Buisness Name</label>
-            <TextField defaultValue="Hello World" fullWidth />
+            <TextField
+              onChange={(e) => handleChange(e)}
+              name="BuisnessName"
+              fullWidth
+            />
           </Grid>
           <Grid item xs={6} className="form-label-div">
             <label>Button Label </label>
             <FormControl sx={{ minWidth: "100%" }}>
               <Select
-                value={age}
+                name="ButtonLabel"
                 sx={{ textAlign: "left" }}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
                 displayEmpty
                 inputProps={{ "aria-label": "Without label" }}
               >
@@ -73,7 +104,11 @@ export default function TextAddForm() {
         </Grid>
         <Grid item xs={12} className="form-label-div">
           <label>Website URL</label>
-          <TextField defaultValue="Hello World" fullWidth />
+          <TextField
+            onChange={(e) => handleChange(e)}
+            name="WebsiteUrl"
+            fullWidth
+          />
         </Grid>
       </Grid>
       <Box className="media-form-Button">
@@ -83,7 +118,11 @@ export default function TextAddForm() {
         >
           Back
         </Button>
-        <Button variant="contained" sx={{ marginLeft: "20px" }}>
+        <Button
+          onClick={() => handleClick()}
+          variant="contained"
+          sx={{ marginLeft: "20px" }}
+        >
           Submit
         </Button>
       </Box>
