@@ -8,9 +8,11 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import TextField from "@mui/material/TextField";
 import { MediaAddWrapper } from "../style";
+import SubmitPopUp from "../../../app/GlobalComponents/SubmitPopUp";
 
 export default function TextAddForm() {
   const textFormData = {
@@ -23,12 +25,25 @@ export default function TextAddForm() {
   };
   // const [age, setAge] = React.useState("");
   const [textForm, setTextForm] = useState(textFormData);
+  const [open, setOpen] = useState(false);
+
+  const submitMediaFrom = () => {
+    setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+      navigate("/create-add");
+    }, 600);
+  };
   const handleChange = (e) => {
     setTextForm({ ...textForm, [e.target.name]: e.target.value });
   };
+  const navigate = useNavigate();
 
   const handleClick = () => {
     console.log(textForm);
+  };
+  const handleBackButton = () => {
+    navigate("/create-add");
   };
   return (
     <MediaAddWrapper>
@@ -37,7 +52,7 @@ export default function TextAddForm() {
       </Typography>
       <Grid container spacing={2}>
         <Grid container spacing={2} item xs={12} md={12}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Grid item xs={12} className="form-label-div">
               <label>Heading 01</label>
               <TextField
@@ -49,6 +64,7 @@ export default function TextAddForm() {
             <Grid
               item
               xs={12}
+              sm={12}
               className="form-label-div"
               sx={{ marginTop: "10px" }}
             >
@@ -60,7 +76,7 @@ export default function TextAddForm() {
               />
             </Grid>
           </Grid>
-          <Grid item xs={6} className="form-label-div">
+          <Grid item xs={12} sm={6} className="form-label-div">
             <label>Description 01</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -74,7 +90,7 @@ export default function TextAddForm() {
           </Grid>
         </Grid>
         <Grid container spacing={2} item xs={12} md={12}>
-          <Grid item xs={6} className="form-label-div">
+          <Grid item xs={12} sm={6} className="form-label-div">
             <label>Buisness Name</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -82,7 +98,7 @@ export default function TextAddForm() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={6} className="form-label-div">
+          <Grid item xs={12} sm={6} className="form-label-div">
             <label>Button Label </label>
             <FormControl sx={{ minWidth: "100%" }}>
               <Select
@@ -114,17 +130,19 @@ export default function TextAddForm() {
       <Box className="media-form-Button">
         <Button
           variant="outlined"
+          onClick={() => handleBackButton()}
           xs={{ border: "1px solid #acacac", color: "#acacac" }}
         >
           Back
         </Button>
         <Button
-          onClick={() => handleClick()}
+          onClick={() => submitMediaFrom()}
           variant="contained"
           sx={{ marginLeft: "20px" }}
         >
           Submit
         </Button>
+        <SubmitPopUp open={open} />
       </Box>
     </MediaAddWrapper>
   );

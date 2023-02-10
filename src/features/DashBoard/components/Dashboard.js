@@ -22,10 +22,10 @@ export default function Dashboard() {
     <DashboardWrapper>
       <Grid container>
         <Grid container spacing={3}>
-          <Grid item xs={6} md={6}>
+          <Grid item xs={12} md={6} className="Table-dashboard">
             <AdTable />
           </Grid>
-          <Grid item xs={6} md={6}>
+          <Grid item xs={12} md={6}>
             <AddChartTable />
           </Grid>
         </Grid>

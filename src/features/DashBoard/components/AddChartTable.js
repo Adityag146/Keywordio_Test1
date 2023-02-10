@@ -33,12 +33,14 @@ export default function AddChartTable() {
           <IconButton
             onClick={(e) => handleChart(e)}
             color="primary"
+            className={showContent ? "active" : ""}
             aria-label="upload picture"
             component="label"
           >
             <DataSaverOffIcon />
           </IconButton>
           <IconButton
+            className={!showContent ? "active" : ""}
             onClick={() => handleAd()}
             color="primary"
             aria-label="upload picture"

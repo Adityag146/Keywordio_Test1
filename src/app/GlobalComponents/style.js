@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DashboardWrapper = styled.div`
   && {
     padding: 20px 20px;
-    margin-top: 100px;
+    margin: 100px 20px 30px 20px;
     border-radius: 10px;
   }
   .switch-content {
@@ -50,18 +50,28 @@ export const ChartWrapper = styled.div`
     display: flex;
     width: 300px !important;
   }
+  .color-wraper{
+    width: 50px; 
+    height: 15px;
+    border-radius: 6px;
+  }
   && {
     background: #fff;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
       0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-    border-radius: 3px;
+    border-radius: 5px;
     padding-bottom: 15px;
+    height: 385px;
+    overflow: auto;
   }
-  .chart-parent p {
+  .chart-parent {
     padding: 12px 16px;
     font-weight: bold;
+    display:flex;
+    justify-content:space-between;
     border-bottom: 1px solid rgba(224, 224, 224, 1);
   }
+  .chart-parent 
 `;
 export const HeaderWrapper = styled.div`
   .header-Web {

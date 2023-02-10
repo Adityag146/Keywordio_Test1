@@ -12,6 +12,9 @@ export const AddChartWrapper = styled.div`
   }
   .switch-btn {
     display: table;
+    position: absolute;
+    right: 14px;
+    bottom: 13px;
     background: #eeeeee;
     border-radius: 30px;
   }
@@ -19,11 +22,25 @@ export const AddChartWrapper = styled.div`
     background: transparent;
     border: none;
   }
+  .switch-btn svg {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+  }
+  .switch-btn .MuiButtonBase-root {
+    padding: 3px;
+  }
+  .switch-btn .MuiButtonBase-root.active {
+    background: #0699ff;
+    padding: 3px;
+  }
+  .switch-btn .MuiButtonBase-root.active svg {
+    color: #fff;
+  }
 `;
 export const DashboardWrapper = styled.div`
   && {
     padding: 20px 20px;
-    margin-top: 100px;
+    margin: 100px 20px 30px 20px;
     border-radius: 10px;
   }
   .switch-content {
@@ -35,6 +52,11 @@ export const DashboardWrapper = styled.div`
     position: absolute;
     right: 0;
     bottom: 0;
+  }
+  .Table-dashboard .MuiPaper-root,
+  .dashTableDetail .MuiPaper-root {
+    height: 385px;
+    overflow: auto;
   }
   .switch-btn {
     display: table;

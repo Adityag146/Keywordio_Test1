@@ -2,13 +2,18 @@ import styled from "styled-components";
 export const CretaeAddWrapper = styled.div`
   && {
     padding: 20px 20px;
-    margin-top: 100px;
+    margin: 100px 20px 30px 20px;
     border-radius: 10px;
     background: #fff;
     border: 1px solid #cecece;
   }
-  .text-section {
-    background: #fafafa;
+  .text-section img {
+    height: 257px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
   }
   .MuiCardContent-root {
     background: #fafafa;
@@ -30,7 +35,7 @@ export const CretaeAddWrapper = styled.div`
 export const MediaAddWrapper = styled.div`
   && {
     padding: 20px 20px;
-    margin-top: 100px;
+    margin: 100px 20px 30px 20px;
     border-radius: 10px;
     background: #fff;
     border: 1px solid #cecece;

@@ -8,6 +8,7 @@ import {
   Grid,
   MenuItem,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -16,7 +17,25 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 export default function CreateAdd() {
-  const [selectForm, setSelectForm] = useState();
+  const [selectmediaForm, setmediaSelectForm] = useState(false);
+  const [selecttextForm, settextSelectForm] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const submitForm = (e) => {
+    if (selecttextForm) {
+      navigate("/textAddForm");
+    } else if (selectmediaForm) {
+      navigate("/mediaAddForm");
+    }
+  };
+  const handleChange = (e, name) => {
+    console.log(e);
+    if (name == "MediaAddchk") setmediaSelectForm(e.target.checked);
+    if (name == "TextAddchk") settextSelectForm(e.target.checked);
+  };
+
   return (
     <CretaeAddWrapper>
       <Typography variant="h6" gutterBottom sx={{ textAlign: "left" }}>
@@ -24,15 +43,16 @@ export default function CreateAdd() {
       </Typography>
       <Grid container spacing={2} className="select-add-parent">
         <Grid item xs={12} md={3}></Grid>
-        <Grid item xs={12} md={3} sx={{ height: 300, position: "relative" }}>
-          <Box className="text-section" sx={{ height: 100 }}>
-            <FormControlLabel control={<Checkbox />} />
+        <Grid item xs={12} md={3} sm={6} sx={{ position: "relative" }}>
+          <Box className="text-section">
+            <FormControlLabel
+              control={
+                <Checkbox onChange={(e) => handleChange(e, "TextAddchk")} />
+              }
+            />
             <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                sx={{ height: 220 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-              />
+              <img src="images/mobTexr.png" />
+
               <CardContent>
                 <Typography
                   variant="p"
@@ -45,15 +65,22 @@ export default function CreateAdd() {
             </Card>
           </Box>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ height: 300, position: "relative" }}>
+        <Grid
+          item
+          sm={6}
+          xs={12}
+          md={3}
+          sx={{ height: 300, position: "relative" }}
+        >
           <Box className="text-section" sx={{ height: 100 }}>
-            <FormControlLabel control={<Checkbox />} />
+            <FormControlLabel
+              control={
+                <Checkbox onChange={(e) => handleChange(e, "MediaAddchk")} />
+              }
+            />
             <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                sx={{ height: 220 }}
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-              />
+              <img src="images/Text.png" />
+
               <CardContent>
                 <Typography
                   variant="p"
@@ -69,7 +96,15 @@ export default function CreateAdd() {
         <Grid item xs={12} md={3}></Grid>
       </Grid>
       <Grid xs={12} className="media-form-Button">
-        <Button variant="contained" sx={{ marginLeft: "20px" }}>
+        <Button
+          variant="contained"
+          sx={{ marginLeft: "20px" }}
+          onClick={(e) => submitForm(e)}
+          disabled={
+            !(selecttextForm || selectmediaForm) ||
+            !(!selecttextForm || !selectmediaForm)
+          }
+        >
           Next
         </Button>
       </Grid>

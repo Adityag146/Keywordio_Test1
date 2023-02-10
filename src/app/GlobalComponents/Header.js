@@ -15,12 +15,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { HeaderWrapper } from "./style";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
-const navItems = ["Dashboard", "Create Ads"];
+const navItems = [
+  { label: "Dashboard", link: "/" },
+  { label: "Create Ads", link: "/create-add" },
+];
 
 function DrawerAppBar(props) {
   const { window } = props;
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -34,10 +39,13 @@ function DrawerAppBar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
+        {navItems.map(({ label, link }) => (
+          <ListItem key={label} disablePadding>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              onClick={() => navigate(link)}
+            >
+              <ListItemText primary={label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -78,9 +86,13 @@ function DrawerAppBar(props) {
             App Logo
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#3a444d" }}>
-                {item}
+            {navItems.map(({ label, link }) => (
+              <Button
+                key={label}
+                sx={{ color: "#3a444d" }}
+                onClick={() => navigate(link)}
+              >
+                {label}
               </Button>
             ))}
           </Box>

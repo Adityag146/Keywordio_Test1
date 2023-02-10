@@ -22,29 +22,24 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
-function createData(name, calories, fat, carbs) {
+function createData(Campaigns, click, cost, conversions, Revenue) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
+    Campaigns,
+    click,
+    cost,
+    conversions,
+    Revenue,
   };
 }
 
 const rows = [
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Donut", 452, 25.0, 51, 4.9),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Honeycomb", 408, 3.2, 87, 6.5),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Jelly Bean", 375, 0.0, 94, 0.0),
-  createData("KitKat", 518, 26.0, 65, 7.0),
-  createData("Lollipop", 392, 0.2, 98, 0.0),
-  createData("Marshmallow", 318, 0, 81, 2.0),
-  createData("Nougat", 360, 19.0, 9, 37.0),
-  createData("Oreo", 437, 18.0, 63, 4.0),
+  createData("Cosmetics", 305, 3.7, 67, 4.3),
+  createData("Serum", 452, 25.0, 51, 4.9),
+  createData("FaceWash", 262, 16.0, 24, 6.0),
+  createData("Frozen ", 159, 6.0, 24, 4.0),
+  createData("Shampoo", 356, 16.0, 49, 3.9),
+  createData("Conditioners", 408, 3.2, 87, 6.5),
+  createData("Total", 437, 18.0, 63, 4.0),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -81,34 +76,34 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
+    id: "Campaigns",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)",
+    label: "Campaigns",
   },
   {
-    id: "calories",
+    id: "click",
     numeric: true,
     disablePadding: false,
-    label: "Calories",
+    label: "Click",
   },
   {
-    id: "fat",
+    id: "cost",
     numeric: true,
     disablePadding: false,
-    label: "Fat (g)",
+    label: "Cost",
   },
   {
-    id: "carbs",
+    id: "conversions ",
     numeric: true,
     disablePadding: false,
-    label: "Carbs (g)",
+    label: "conversions",
   },
   {
-    id: "carbs",
+    id: "Revenue",
     numeric: true,
     disablePadding: false,
-    label: "Carbs (g)",
+    label: "Revenue",
   },
 ];
 
@@ -131,7 +126,6 @@ function EnhancedTableHead(props) {
         <TableCell sx={{ padding: "8px 16px", fontWeight: "bold" }}>
           Ad Insights
         </TableCell>
-
         <TableCell sx={{ padding: "8px 16px" }}></TableCell>
         <TableCell sx={{ padding: "8px 16px" }}></TableCell>
         <TableCell sx={{ padding: "8px 16px" }}></TableCell>
@@ -225,7 +219,7 @@ export default function AdTable() {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} className="dashTableDetail">
       <Paper sx={{ width: "100%", mb: 2 }}>
         <TableContainer>
           <Table aria-labelledby="tableTitle">
@@ -259,12 +253,12 @@ export default function AdTable() {
                           sx={{ padding: "16px" }}
                           padding="none"
                         >
-                          {row.name}
+                          {row.Campaigns}
                         </TableCell>
-                        <TableCell>{row.calories}</TableCell>
-                        <TableCell>{row.fat}</TableCell>
-                        <TableCell>{row.carbs}</TableCell>
-                        <TableCell>{row.carbs}</TableCell>
+                        <TableCell>{row.click}</TableCell>
+                        <TableCell>{row.cost}</TableCell>
+                        <TableCell>{row.conversions}</TableCell>
+                        <TableCell>{row.Revenue}</TableCell>
                       </TableRow>
                     </>
                   );

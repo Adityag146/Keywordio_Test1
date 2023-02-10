@@ -3,6 +3,8 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Typography, Box, FormControl, Select, MenuItem } from "@mui/material";
 import { MediaAddWrapper } from "../style";
+import { useNavigate } from "react-router-dom";
+import SubmitPopUp from "../../../app/GlobalComponents/SubmitPopUp";
 import Button from "@mui/material/Button";
 
 export default function MediaAddForm() {
@@ -19,13 +21,22 @@ export default function MediaAddForm() {
     WebsiteUrl: "",
   };
   const [mediaFormInput, setMediaFormInput] = useState(mediaFormData);
+  const [backtoForm, setBackToForm] = useState(false);
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
   const handleChange = (e) => {
     setMediaFormInput({ ...mediaFormInput, [e.target.name]: e.target.value });
     // console.log(mediaFormInput);
   };
-
+  const handleBackButton = () => {
+    navigate("/create-add");
+  };
   const submitMediaFrom = () => {
-    console.log(mediaFormInput);
+    setOpen(true);
+    setTimeout(() => {
+      setOpen(false);
+      navigate("/create-add");
+    }, 600);
   };
   const [age, setAge] = React.useState("");
   // const handleChange = (event) => {
@@ -38,7 +49,7 @@ export default function MediaAddForm() {
       </Typography>
       <Grid container spacing={2}>
         <Grid container spacing={2} item xs={12} md={12}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Grid item xs={12} className="form-label-div">
               <label>Heading 01</label>
               <TextField
@@ -61,7 +72,7 @@ export default function MediaAddForm() {
               />
             </Grid>
           </Grid>
-          <Grid item xs={6} className="form-label-div">
+          <Grid item xs={12} sm={6} className="form-label-div">
             <label>Description 01</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -75,7 +86,7 @@ export default function MediaAddForm() {
           </Grid>
         </Grid>
         <Grid container spacing={2} item xs={12} md={12}>
-          <Grid item xs={4} className="form-label-div">
+          <Grid item xs={12} sm={4} className="form-label-div">
             <label>Landscape Marketig Image(1:9:1)</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -83,7 +94,7 @@ export default function MediaAddForm() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={4} className="form-label-div">
+          <Grid item xs={12} sm={4} className="form-label-div">
             <label>Portrait MArketing Image(4:5)</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -91,7 +102,7 @@ export default function MediaAddForm() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={4} className="form-label-div">
+          <Grid item xs={12} sm={4} className="form-label-div">
             <label>Square Marketig Image(1:1)</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -100,7 +111,7 @@ export default function MediaAddForm() {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} className="form-label-div">
+        <Grid item xs={12} sm={12} className="form-label-div">
           <label>Video URL</label>
           <TextField
             onChange={(e) => handleChange(e)}
@@ -109,7 +120,7 @@ export default function MediaAddForm() {
           />
         </Grid>
         <Grid container spacing={2} item xs={12} md={12}>
-          <Grid item xs={6} className="form-label-div">
+          <Grid item xs={12} sm={6} className="form-label-div">
             <label>Buisness Name</label>
             <TextField
               onChange={(e) => handleChange(e)}
@@ -117,7 +128,7 @@ export default function MediaAddForm() {
               fullWidth
             />
           </Grid>
-          <Grid item xs={6} className="form-label-div">
+          <Grid item xs={12} sm={6} className="form-label-div">
             <label>Button Label </label>
             <FormControl sx={{ minWidth: "100%" }}>
               <Select
@@ -150,6 +161,7 @@ export default function MediaAddForm() {
       <Box className="media-form-Button">
         <Button
           variant="outlined"
+          onClick={() => handleBackButton()}
           xs={{ border: "1px solid #acacac", color: "#acacac" }}
         >
           Back
@@ -161,6 +173,7 @@ export default function MediaAddForm() {
         >
           Submit
         </Button>
+        <SubmitPopUp open={open} />
       </Box>
     </MediaAddWrapper>
   );
